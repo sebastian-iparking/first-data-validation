@@ -21,18 +21,21 @@ app.post('/validator', (req, res) => {
 
 app.post('/response_failure', (req, res) => {
     console.log(req.body);
+    console.log(req.route);
     console.log(time);
     res.send('Response_Failure');
 })
 
 app.post('/response_success', (req, res) => {
     console.log(req.body);
+    console.log(req.route);
     console.log(time);
     res.send('Response_Success')
 })
 
 app.post('/transaction_notification', (req, res) => {
     console.log(req.body);
+    console.log(req.route);
     console.log(time);
     res.send('Transaction_Notification')
 })

@@ -4,7 +4,12 @@ import CryptoJS from 'crypto-js';
 
 function Form() {
     const [data, setData] = useState({
-        txntype: 'sale',
+        // tdate: '1599067841',
+        //txntype: 'sale',
+        //txntype: 'preauth',
+        //txntype: 'postauth',
+        // txntype: 'void',
+        txntype: 'return',
         timezone: 'America/Buenos_Aires',
         txndatetime: Moment(new Date()).format("YYYY:MM:DD-HH:mm:ss"),
         hash_algorithm: 'HMACSHA256',
@@ -12,20 +17,20 @@ function Form() {
         mode: 'payonly',
         chargetotal: '100',
         currency: '032',
-        responseFailURL: 'http://8ab3c3801805.ngrok.io/response_failure',
-        responseSuccessURL: 'http://8ab3c3801805.ngrok.io/response_success',
-        transactionNotificationURL: 'http://8ab3c3801805.ngrok.io/transaction_notification',
+        responseFailURL: 'http://60608599dfc6.ngrok.io/response_failure',
+        responseSuccessURL: 'http://60608599dfc6.ngrok.io/response_success',
+        transactionNotificationURL: 'http://60608599dfc6.ngrok.io/transaction_notification',
         paymentMethod: 'M',
         cardnumber: '5165 8500 0000 0008',
         expmonth: '12',
         expyear: '22',
         cvm: '123',
-        numberOfInstallments: 1,
+        numberOfInstallments: 3,
         installmentsInterest: false,
-        transactionId: "1597534682",
+        // transactionId: "C-13ddc23f-463c-4a4c-8dc3-2874a2112d3b",
         full_bypass: true,
         language: "es_ES",
-        oid: '1597534682'
+        // oid: 'C-756d562a-3796-4a90-83f1-f93258717e83'
     });
 
     function createHash(chargetotal, currency){
@@ -49,6 +54,7 @@ function Form() {
             data.responseFailURL+separator+
             data.responseSuccessURL+separator+
             data.storename+separator+
+            // data.tdate+separator+
             data.timezone+separator+
             // data.transactionId+separator+
             data.transactionNotificationURL+separator+
@@ -87,6 +93,7 @@ function Form() {
                 {/*<input className={"form-control"} type="text" name={"transactionId"} value={data.transactionId}/>*/}
                 <input className={"form-control"} type="text" name={"numberOfInstallments"} value={data.numberOfInstallments}/>
                 <input className={"form-control"} type="text" name={"installmentsInterest"} value={data.installmentsInterest}/>
+                {/*<input className={"form-control"} type="text" name={"tdate"} value={data.tdate}/>*/}
                 <button className={"btn btn-success"} type="submit" >Enviar</button>
             </form>
         </div>
